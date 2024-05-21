@@ -22,32 +22,66 @@ function average(x, y) {
 // Ex.:
 //   approximatelyEqual(10.001, 10);
 //   => true
-function approximatelyEqual(x, y) {}
+function approximatelyEqual(x, y) {
+  return Math.abs(x - y) < 0.001;
+}
 
 // Given a first name and last name, return a full name in the format "FIRST LAST"
 // Ex.:
 //   fullName('John', 'Doe');
 //   => 'John Doe'
-function fullName(firstName, lastName) {}
+function fullName(firstName, lastName) {
+  return `${firstName} ${lastName}`;
+}
 
 // Generate the sentence "PERSON was drinking BEVERAGE at LOCATION" using the
 // person, beverage and location provided.
 // Ex.:
 //   generateSentence('Kay', 'coffee', 'the local cafe');
 //   => 'Kay was drinking coffee at the local cafe.'
-function generateSentence(person, beverage, location) {}
+function generateSentence(person, beverage, location) {
+  return `${person} was drinking ${beverage} at ${location}.`;
+}
 
 // Return the given string with all vowels replced with '*' characters.
 // Ex.:
 //   censorVowels('javascript');
 //   => 'j*v*scr*pt'
-function censorVowels(string) {}
+function censorVowels(string) {
+  const vowels = ['a', 'e', 'i', 'o', 'u'];
+  let result = "";
+  for (const letter of string) {
+    if (vowels.includes(letter)) {
+      result += '*';
+    } else {
+      result += letter;
+    }
+  }
+  return result;
+}
 
 // Return the given string in sticky case.
 // Ex.:
 //   stickyCase('hello world');
 //   => 'hElLo wOrLd'
-function stickyCase(string) {}
+function stickyCase(string) {
+  let result = '';
+  let toUpper = false; 
+  
+  for (let i = 0; i < string.length; i++) {
+    const char = string[i];
+    
+    if (toUpper) {
+      result += char.toUpperCase();
+    } else {
+      result += char.toLowerCase();
+    }
+    
+    toUpper = !toUpper;
+  }
+  
+  return result;
+}
 
 // Return the given string in leetspeak. Leetspeak is a modified version of
 // English where characters are replaced by numbers or symbols. For this
@@ -61,7 +95,27 @@ function stickyCase(string) {}
 // Ex.:
 //   leetspeak('javascript');
 //   => 'j4v45cr1p7'
-function leetspeak(string) {}
+function leetspeak(string) {
+  let result = '';
+  for (const letter of string) {
+    if (letter === 'a') {
+      result += '4';
+    } else if (letter === 'e') {
+      result += '3';
+    } else if (letter === 'i') {
+      result += '1';
+    } else if (letter === 'o') {
+      result += '0';
+    } else if (letter === 's') {
+      result += '5';
+    } else if (letter === 't') {
+      result += '7'
+    } else {
+      result += letter;
+    }
+  }
+  return result;
+}
 
 export {
   approximatelyEqual,
